@@ -1,6 +1,7 @@
 # Machine Learning Quiz Web App
 
 A modern, interactive web application that generates personalized machine learning quizzes using Google's Gemini AI. Built with Flask backend and vanilla HTML/CSS/JavaScript frontend, this app allows users to test their knowledge on various ML topics with customizable difficulty levels and question counts.
+[![ML Quiz App Demo](https://img.youtube.com/vi/Ecvasiz2DLk/0.jpg)](https://youtu.be/Ecvasiz2DLk)
 
 ## 🌟 Features
 
