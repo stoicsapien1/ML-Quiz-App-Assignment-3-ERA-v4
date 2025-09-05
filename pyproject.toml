@@ -1,0 +1,12 @@
+[project]
+name = "ml-quiz-app"
+version = "1.0.0"
+description = "Machine Learning Quiz Web Application with Gemini AI Integration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0.0",
+    "google-generativeai>=0.3.0",
+    "python-dotenv>=1.0.0",
+    "flask-cors>=4.0.0",
+]

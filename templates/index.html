@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Quiz App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-brain"></i> Machine Learning Quiz App</h1>
+            <p>Test your knowledge with AI-generated quizzes powered by Google Gemini</p>
+            <p>Made with ❤️ by Belal</p>
+        </header>
+
+        <!-- Quiz Configuration Form -->
+        <div id="quiz-config" class="quiz-config">
+            <div class="form-container">
+                <h2><i class="fas fa-cog"></i> Quiz Configuration</h2>
+                
+                <form id="config-form">
+                    <div class="form-group">
+                        <label for="api-key">
+                            <i class="fas fa-key"></i> Gemini API Key
+                        </label>
+                        <input type="password" id="api-key" name="api-key" required 
+                               placeholder="Enter your Google Gemini API key">
+                        <small>Get your free API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">
+                            <i class="fas fa-book"></i> Quiz Topic
+                        </label>
+                        <input type="text" id="topic" name="topic" value="Machine Learning" required 
+                               placeholder="e.g., Machine Learning, Deep Learning, Neural Networks">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="num-questions">
+                                <i class="fas fa-list-ol"></i> Number of Questions
+                            </label>
+                            <input type="number" id="num-questions" name="num-questions" 
+                                   min="1" max="25" value="10" required>
+                            <small>Maximum 25 questions</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="difficulty">
+                                <i class="fas fa-chart-line"></i> Difficulty Level
+                            </label>
+                            <select id="difficulty" name="difficulty" required>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate" selected>Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Generate Quiz
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Generating your quiz with AI...</p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="quiz-container hidden">
+            <div class="quiz-header">
+                <h2 id="quiz-title">Quiz: <span id="quiz-topic"></span></h2>
+                <div class="quiz-info">
+                    <span id="question-counter">Question 1 of 10</span>
+                    <span id="difficulty-badge" class="difficulty-badge"></span>
+                </div>
+            </div>
+
+            <form id="quiz-form">
+                <div id="questions-container"></div>
+                
+                <div class="quiz-actions">
+                    <button type="button" id="prev-btn" class="btn btn-secondary" disabled>
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" id="next-btn" class="btn btn-primary">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" id="submit-btn" class="btn btn-success hidden">
+                        <i class="fas fa-check"></i> Submit Quiz
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Container -->
+        <div id="results-container" class="results-container hidden">
+            <div class="results-header">
+                <h2><i class="fas fa-trophy"></i> Quiz Results</h2>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="score-percentage">0%</span>
+                    </div>
+                    <div class="score-details">
+                        <p id="score-text">You scored 0 out of 0</p>
+                        <p id="score-message">Keep learning!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="results-list" class="results-list"></div>
+
+            <div class="results-actions">
+                <button id="new-quiz-btn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Take Another Quiz
+                </button>
+                <button id="retry-quiz-btn" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Retry This Quiz
+                </button>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="error-text"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
