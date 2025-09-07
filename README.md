@@ -230,3 +230,4 @@ If you have questions or need help:
 **Happy Learning!** 🎓
 
 This app is designed to make learning machine learning concepts fun and interactive. Whether you're a beginner or an expert, you can test your knowledge and learn something new with every quiz!
+Made with ❤️ by Belal Ahmed Siddiqui
