@@ -58,7 +58,7 @@ This command will:
 Start the Flask development server:
 
 ```bash
-uv run python main.py
+uv run python app.py
 ```
 
 You should see output similar to:
